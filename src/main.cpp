@@ -10,7 +10,7 @@ int main()
 {
     cout << "Usage: raycaster test" << endl;
     Image img("test.png", 640, 800);
-    img.set_color(Image::rgb_black());
+    img.set_color(Color::green());
     img.save_image();
     return 0;
 }

@@ -15,12 +15,12 @@ Image::~Image()
     FreeImage_Unload(bitmap);
 }
 
-void Image::set_pixel_color(unsigned w, unsigned h, RGBQUAD col)
+void Image::set_pixel_color(unsigned w, unsigned h, Color col)
 {
-    FreeImage_SetPixelColor(bitmap, w, h, &col);
+    FreeImage_SetPixelColor(bitmap, w, h, &(col.quad));
 }
 
-void Image::set_color(RGBQUAD col)
+void Image::set_color(Color col)
 {
     for (unsigned x{0};x<width;++x)
     {
@@ -34,40 +34,4 @@ void Image::set_color(RGBQUAD col)
 void Image::save_image()
 {
     FreeImage_Save(FIF_PNG, bitmap, name.c_str(), PNG_DEFAULT);
-}
-
-
-RGBQUAD Image::rgb_color(unsigned char r, unsigned char g, unsigned char b)
-{
-    RGBQUAD res;
-    res.rgbRed = r;
-    res.rgbGreen = g;
-    res.rgbBlue = b;
-    res.rgbReserved = 255;
-    return res;
-}
-
-RGBQUAD Image::rgb_red()
-{
-    return rgb_color(255,0,0);
-}
-
-RGBQUAD Image::rgb_green()
-{
-    return rgb_color(0,255,0);
-}
-
-RGBQUAD Image::rgb_blue()
-{
-    return rgb_color(0,0,255);
-}
-
-RGBQUAD Image::rgb_white()
-{
-    return rgb_color(255,255,255);
-}
-
-RGBQUAD Image::rgb_black()
-{
-    return rgb_color(0,0,0);
 }
