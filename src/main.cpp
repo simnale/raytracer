@@ -2,12 +2,13 @@
 #include <string>
 #include <vector>
 
-#include <FreeImage.h>
+#include "image.h"
 
 using namespace std;
 
 int main()
 {
     cout << "Usage: raycaster test" << endl;
+    Image img("test", 100, 200);
     return 0;
 }
